@@ -1,0 +1,10 @@
+diff --git a/node_modules/react-native-web/dist/index.js b/node_modules/react-native-web/dist/index.js
+index 592354f..89da72d 100644
+--- a/node_modules/react-native-web/dist/index.js
++++ b/node_modules/react-native-web/dist/index.js
+@@ -1,4 +1,4 @@
+-export { default as unstable_createElement } from './exports/createElement';
++export { default as createElement } from './exports/createElement';
+ export { default as findNodeHandle } from './exports/findNodeHandle';
+ export { default as processColor } from './exports/processColor';
+ export { default as render } from './exports/render';
