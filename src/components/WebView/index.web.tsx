@@ -1,5 +1,4 @@
-/* global parent*/
-
+/* global parent */
 import React, {Component} from 'react';
 import {StyleSheet, View, createElement} from 'react-native';
 import iife from './iife';
@@ -57,9 +56,10 @@ class WebView extends Component<WebViewProps> {
       return null;
     }
 
-    const flatternStyle = StyleSheet.flatten(style);
-    const height = flatternStyle && flatternStyle.height;
-    const wrapperStyle = height ? {height} : {flex: 1};
+    const flatternStyle = StyleSheet.flatten(style) || {};
+    const {height, ...rest} = flatternStyle;
+    const viewStyle = height ? [{height}, styles.wrapper] : styles.scrollWrapper;
+    const frameStyle = height ? {height} : {};
     let attributes = {
       width: '100%',
       height: '100%',
@@ -67,7 +67,7 @@ class WebView extends Component<WebViewProps> {
       onLoad: this.onLoad,
       onError,
       ref: this.setRef,
-      style: [styles.iframe, style],
+      style: [styles.iframe, frameStyle],
       id: this.id,
     };
     let iframe = null;
@@ -84,21 +84,25 @@ class WebView extends Component<WebViewProps> {
       });
     } else {
       iframe = createElement('iframe', {
-        // eslint-disable-next-line no-script-url
         src: 'javascript:' + source.html,
         ...attributes,
       });
     }
 
     // @ts-ignore
-    return <View style={[styles.wrapper, wrapperStyle]}>{iframe}</View>;
+    return <View style={[styles.wrapper, viewStyle, rest]}>{iframe}</View>;
   }
 }
 
 const styles = StyleSheet.create({
-  // https://bugs.webkit.org/show_bug.cgi?id=149264
-  // 手机上需要包裹一个scroll元素才能滚动
+  // auto height的webview，不需要滚动，否则部分浏览器父元素无法滚动
   wrapper: {
+    overflow: 'hidden',
+  },
+  // @see: https://bugs.webkit.org/show_bug.cgi?id=149264
+  // 手机上需要包裹一个scroll元素才能滚动
+  scrollWrapper: {
+    flexGrow: 1,
     overflow: 'scroll',
     WebkitOverflowScrolling: 'touch',
   },
