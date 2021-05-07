@@ -1,6 +1,6 @@
 # UniversalApp
 
-全栈应用框架，支持app、h5、pc等多平台。
+全栈应用框架，支持app、h5、pc等多平台，按[平台](./docs/platform.md)打包。
 
 app端基于react-native框架。
 
