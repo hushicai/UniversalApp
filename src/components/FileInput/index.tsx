@@ -4,7 +4,9 @@ import {createElement} from 'react-native';
 const ua = navigator.userAgent;
 const isAndroid = !/like android/i.test(ua) && /android/i.test(ua);
 
-const Input = React.forwardRef<HTMLInputElement, any>((props, ref) => {
+type InputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {children, capture, ...rest} = props;
   const other: {capture?: string} = {};
   switch (capture) {
@@ -22,10 +24,7 @@ const Input = React.forwardRef<HTMLInputElement, any>((props, ref) => {
   return createElement('input', {ref, ...rest, ...other}, children);
 });
 
-const FileInput = React.forwardRef<
-  HTMLInputElement,
-  DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
->((props, ref) => {
+const FileInput = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {onChange, accept, ...rest} = props;
   const onChangeCallback = useCallback(
     e => {
