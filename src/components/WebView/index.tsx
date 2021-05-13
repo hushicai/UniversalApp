@@ -13,8 +13,9 @@ function WebView(p: WebViewProps) {
     props.injectedJavaScript = `
       ${extraJS}
     `;
+    const onMessage = props.onMessage;
     props.onMessage = event => {
-      return parseMessage(event, props);
+      return parseMessage(event, {...rest, onMessage});
     };
   }
   return (
