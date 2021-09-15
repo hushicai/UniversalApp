@@ -7,6 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "start:app": "TARGET=rn CONTAINER=App react-native start",
+    "start:web": "TARGET=web vite",
     "start:h5": "TARGET=web CONTAINER=H5 vite",
     "start:pc": "TARGET=web CONTAINER=PC vite",
     "test": "jest",
