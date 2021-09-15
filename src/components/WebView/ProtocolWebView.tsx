@@ -5,7 +5,7 @@ import wrapIntoHtml from './wrapIntoHtml';
 
 export default function ProtocolWebView({
   content = '',
-  style,
+  style
 }: {
   content: string;
   style?: StyleProp<ViewStyle>;
@@ -24,6 +24,6 @@ export default function ProtocolWebView({
 
 const styles = StyleSheet.create({
   webview: {
-    flex: 1,
-  },
+    flex: 1
+  }
 });

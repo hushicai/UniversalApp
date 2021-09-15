@@ -5,6 +5,6 @@ export default function getScrollHeight() {
     body.offsetHeight,
     html.clientHeight,
     html.scrollHeight,
-    html.offsetHeight,
+    html.offsetHeight
   );
 }

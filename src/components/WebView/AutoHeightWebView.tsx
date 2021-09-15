@@ -17,13 +17,13 @@ export default class AutoHeightWebView extends Component<WebViewProps, S> {
     const props = {
       ...restProps,
       extraJS: `window.ReactNativeWebView.postMessage(${iife(getScrollHeight)});`,
-      style: [{height: this.state.height || 0}, style],
+      style: [{height: this.state.height || 0}, style]
     };
     props.onMessage = ({nativeEvent: {data}}) => {
       const height = +data;
       if (!isNaN(height)) {
         this.setState({
-          height,
+          height
         });
       }
     };

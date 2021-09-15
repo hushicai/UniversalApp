@@ -6,6 +6,6 @@ export default function useKeyboard() {
 
   return {
     keyboardShown: shown,
-    coordinates: {start: {}, end: {height: 0}},
+    coordinates: {start: {}, end: {height: 0}}
   };
 }

@@ -68,24 +68,24 @@ class WebView extends Component<WebViewProps> {
       onError,
       ref: this.setRef,
       style: [styles.iframe, frameStyle],
-      id: this.id,
+      id: this.id
     };
     let iframe = null;
 
     if ('uri' in source) {
       iframe = createElement('iframe', {
         src: source.uri,
-        ...attributes,
+        ...attributes
       });
     } else if ('srcdoc' in document.createElement('iframe')) {
       iframe = createElement('iframe', {
         srcDoc: source.html,
-        ...attributes,
+        ...attributes
       });
     } else {
       iframe = createElement('iframe', {
         src: 'javascript:' + source.html,
-        ...attributes,
+        ...attributes
       });
     }
 
@@ -97,22 +97,22 @@ class WebView extends Component<WebViewProps> {
 const styles = StyleSheet.create({
   // auto height的webview，不需要滚动，否则部分浏览器父元素无法滚动
   wrapper: {
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   // @see: https://bugs.webkit.org/show_bug.cgi?id=149264
   // 手机上需要包裹一个scroll元素才能滚动
   scrollWrapper: {
     flexGrow: 1,
     overflow: 'scroll',
-    WebkitOverflowScrolling: 'touch',
+    WebkitOverflowScrolling: 'touch'
   },
   iframe: {
     position: 'absolute',
     width: '100%',
     height: '100%',
     overflow: 'hidden',
-    borderWidth: 0,
-  },
+    borderWidth: 0
+  }
 });
 
 export default WebView;

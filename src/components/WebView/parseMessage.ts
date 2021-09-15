@@ -3,7 +3,7 @@ import {WebViewCustomFunctionName, WebViewProps} from './types';
 
 export default function parseMessage(event: WebViewMessageEvent, props: WebViewProps) {
   const {
-    nativeEvent: {data: eventData},
+    nativeEvent: {data: eventData}
   } = event;
   const {onMessage, ...rest} = props;
   try {

@@ -8,7 +8,7 @@ export default function useKeyboard() {
     end?: ScreenRect;
   }>({
     start: {screenX: 0, screenY: 0, width: 0, height: 0},
-    end: {screenX: 0, screenY: 0, width: 0, height: 0},
+    end: {screenX: 0, screenY: 0, width: 0, height: 0}
   });
 
   const handleKeyboardWillShow: KeyboardEventListener = e => {
@@ -29,12 +29,12 @@ export default function useKeyboard() {
   useEffect(() => {
     const keyboardWillShowListener = Keyboard.addListener(
       'keyboardWillShow',
-      handleKeyboardWillShow,
+      handleKeyboardWillShow
     );
     const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', handleKeyboardDidShow);
     const keyboardWillHideListener = Keyboard.addListener(
       'keyboardWillHide',
-      handleKeyboardWillHide,
+      handleKeyboardWillHide
     );
     const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', handleKeyboardDidHide);
 
@@ -48,6 +48,6 @@ export default function useKeyboard() {
 
   return {
     keyboardShown: shown,
-    coordinates,
+    coordinates
   };
 }
