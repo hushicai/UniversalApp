@@ -1,15 +1,26 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import {Dimensions, Keyboard} from 'react-native';
 
+const notEditableInputType = ['file', 'checkbox', 'radio', 'reset', 'image', 'submit', 'button'];
+
 export default function useKeyboard() {
   const [shown, setShown] = useState(false);
 
   const focusListener = useCallback((e: FocusEvent) => {
     console.log('[keyboard] focus', e);
-    const target = e && e.target;
+    const target = (e && e.target) as HTMLElement;
     if (target) {
-      const tagName = (target as Node).nodeName;
-      if (tagName === 'INPUT' || tagName === 'TEXTAREA') {
+      const tagName = target.nodeName;
+      if (tagName === 'INPUT') {
+        const inputType = target.getAttribute('type');
+        if (inputType) {
+          if (notEditableInputType.includes(inputType)) {
+            // nothing
+          } else {
+            setShown(true);
+          }
+        }
+      } else if (tagName === 'TEXTAREA') {
         setShown(true);
       }
     }
