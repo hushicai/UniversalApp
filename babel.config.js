@@ -4,7 +4,7 @@ module.exports = {
     [
       'transform-inline-environment-variables',
       {
-        include: ['MODE', 'PLATFORM', 'HOST'],
+        include: ['MODE', 'TARGET', 'CONTAINER', 'HOST'],
       },
     ],
     'lodash',

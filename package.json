@@ -6,10 +6,9 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "start:app": "PLATFORM=App react-native start",
-    "start:web": "PLATFORM=Web vite",
-    "start:h5": "PLATFORM=H5 vite",
-    "start:pc": "PLATFORM=PC vite",
+    "start:app": "TARGET=rn CONTAINER=App react-native start",
+    "start:h5": "TARGET=web CONTAINER=H5 vite",
+    "start:pc": "TARGET=web CONTAINER=PC vite",
     "test": "jest",
     "lint": "eslint ."
   },
