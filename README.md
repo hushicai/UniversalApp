@@ -6,9 +6,16 @@ app端基于react-native框架。
 
 web端基于react-native-web进行web化，本地开发使用`vitejs`，极致的开发体验。
 
-## web
+打包顺序：
 
-如果应用无需区分h5、pc，例如响应式的应用，则可以直接使用web。
+```
+xx.[CONTAINER].js > xx.[TARGET].js > xx.js
+```
+
+这样就可以做到按照文件级别拆分不同平台的代码。
+
+
+## web
 
 ```
 npm run start:web
