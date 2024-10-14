@@ -11,6 +11,7 @@ web端基于react-native-web进行web化，本地开发使用`vitejs`，极致�
 ```
 xx.[CONTAINER].js > xx.[TARGET].js > xx.js
 ```
+其中CONTAINER可取App、H5、PC等，TARGET一般区分RN或Web。
 
 这样就可以做到按照文件级别拆分不同平台的代码。
 
